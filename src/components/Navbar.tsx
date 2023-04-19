@@ -4,8 +4,10 @@ import { AppBar, Toolbar, Container, IconButton, Typography } from '@mui/materia
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import './../assets/Navbar.scss';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
+    const { t } = useTranslation();
     const [isMenuVisible, setMenuVisible] = useState(false);
 
     return ( 
@@ -18,10 +20,10 @@ const Navbar = () => {
 
                     <ul id="nav-content">
                         <li>
-                            <Link className="mx-2" to="/main">Main</Link>
+                            <Link className="mx-2" to="/main">{t('main')}</Link>
                         </li>
                         <li>
-                            <Link className="mx-2" to="/views">Views</Link>
+                            <Link className="mx-2" to="/views">{t('views')}</Link>
                         </li>
                     </ul>
 
