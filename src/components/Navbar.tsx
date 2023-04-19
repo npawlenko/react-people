@@ -19,6 +19,8 @@ const Navbar = () => {
                         react-people
                     </Typography>
 
+                    <LanguageSelect className="mr-5" defaultLanguage="pl" />
+
                     <ul id="nav-content">
                         <li>
                             <Link className="mx-2" to="/main">{t('main')}</Link>
@@ -28,8 +30,7 @@ const Navbar = () => {
                         </li>
                     </ul>
 
-                    <LanguageSelect className="rounded-lg text-black" defaultLanguage="pl" />
-
+                
                     <IconButton
                         size="large"
                         edge="start"

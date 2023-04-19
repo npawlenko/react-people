@@ -1,5 +1,7 @@
+import { InputLabel, Select, MenuItem, SelectChangeEvent, SelectProps } from '@mui/material';
 import { useEffect, useState } from 'react';
 import i18n from './../i18n';
+import { useTranslation } from 'react-i18next';
 
 const availableLanguages: LanguageOption[] = [
     {
@@ -18,15 +20,16 @@ interface LanguageOption {
 }
 
 interface LanuageSelectProps
-    extends React.SelectHTMLAttributes<HTMLSelectElement> {
+    extends SelectProps {
         defaultLanguage?: string;
 }
 
 const LanguageSelect = (props: LanuageSelectProps) => {
-    const [language, setLanguage] = useState(props.defaultLanguage || '');
+    const { t } = useTranslation();
+    const [language, setLanguage] = useState(props?.defaultLanguage || '');
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedLanguage = e.target.value;
+    const handleChange = (e: SelectChangeEvent<unknown>) => {
+        const selectedLanguage = e.target.value as string;
         setLanguage(selectedLanguage);
     };
 
@@ -35,16 +38,38 @@ const LanguageSelect = (props: LanuageSelectProps) => {
     }, [language]);
 
     return ( 
-        <select onChange={handleChange} {...props}>
-            {availableLanguages.map((lang) => (
-                <option
-                    value={lang.key}
-                    selected={props?.defaultLanguage === lang.key ? true : false }
-                >
-                    {lang.text}
-                </option>
-            ))}
-        </select>
+        <>
+            <InputLabel
+                className="mr-2"
+                id="language-select-label"
+                sx={{
+                    color: "white"
+                }}
+            >
+                {t('language')}
+            </InputLabel>
+
+            <Select
+                variant="outlined"
+                labelId="language-select-label"
+                id="language-select"
+                label={t('language')}
+                defaultValue={props?.defaultLanguage as string}
+                onChange={handleChange}
+                sx={{
+                    color: "white"
+                }}
+                {...props}
+            >
+                {availableLanguages.map((lang) => (
+                    <MenuItem
+                        value={lang.key}
+                    >
+                        {lang.text}
+                    </MenuItem>
+                ))}
+            </Select>
+        </>
     );
 }
  

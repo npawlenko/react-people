@@ -1,4 +1,5 @@
 {
     "main": "Main",
-    "views": "Views"
+    "views": "Views",
+    "language": "Language"
 }
