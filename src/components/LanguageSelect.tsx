@@ -1,23 +1,8 @@
 import { InputLabel, Select, MenuItem, SelectChangeEvent, SelectProps } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { availableLanguages } from './../i18n';
 import i18n from './../i18n';
 import { useTranslation } from 'react-i18next';
-
-const availableLanguages: LanguageOption[] = [
-    {
-        key: "en",
-        text: "English"
-    },
-    {
-        key: "pl",
-        text: "Polski"
-    }
-]
-
-interface LanguageOption {
-    key: string;
-    text: string;
-}
 
 interface LanuageSelectProps
     extends SelectProps {

@@ -1,6 +1,22 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+export const availableLanguages: LanguageOption[] = [
+  {
+      key: "en",
+      text: "English"
+  },
+  {
+      key: "pl",
+      text: "Polski"
+  }
+]
+
+export interface LanguageOption {
+  key: string;
+  text: string;
+}
+
 // the translations
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
