@@ -1,18 +1,18 @@
 
-import { useState } from 'react';
-import { AppBar, Toolbar, Container, IconButton, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 import './../assets/Navbar.scss';
+import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './LanguageSelect';
+import NavigationDrawer from './NavigationDrawer';
 
 const Navbar = () => {
+    const theme = useTheme();
     const { t } = useTranslation();
-    const [isMenuVisible, setMenuVisible] = useState(false);
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     return ( 
-        <AppBar position="static">
+        <AppBar position="relative">
             <Container>
                 <Toolbar disableGutters>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -21,26 +21,19 @@ const Navbar = () => {
 
                     <LanguageSelect className="mr-5" defaultLanguage="pl" />
 
-                    <ul id="nav-content">
-                        <li>
-                            <Link className="mx-2" to="/main">{t('main')}</Link>
-                        </li>
-                        <li>
-                            <Link className="mx-2" to="/views">{t('views')}</Link>
-                        </li>
-                    </ul>
-
-                
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ ml: 2 }}
-                        onClick={() => setMenuVisible(!isMenuVisible)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    {isMobile ? (
+                        <NavigationDrawer />
+                    ) : (
+                        <div>
+                            <Link className="mx-3" to="/main">
+                                {t('main')}
+                            </Link>
+                            <Link className="ml-3" to="/views">
+                                {t('views')}
+                            </Link>
+                        </div>
+                    )}
+                    
                 </Toolbar>
             </Container>
       </AppBar>

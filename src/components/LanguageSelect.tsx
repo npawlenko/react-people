@@ -56,6 +56,7 @@ const LanguageSelect = (props: LanuageSelectProps) => {
                 label={t('language')}
                 defaultValue={props?.defaultLanguage as string}
                 onChange={handleChange}
+                size="small"
                 sx={{
                     color: "white"
                 }}
