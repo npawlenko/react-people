@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import './../assets/Navbar.scss';
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from './LanguageSelect';
 
 const Navbar = () => {
     const { t } = useTranslation();
@@ -26,6 +27,8 @@ const Navbar = () => {
                             <Link className="mx-2" to="/views">{t('views')}</Link>
                         </li>
                     </ul>
+
+                    <LanguageSelect className="rounded-lg text-black" defaultLanguage="pl" />
 
                     <IconButton
                         size="large"
