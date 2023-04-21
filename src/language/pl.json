@@ -1,5 +1,15 @@
 {
     "main": "Strona główna",
     "views": "Przeglądaj",
-    "language": "Język"
+    "language": "Język",
+    "name": "Imię i nazwisko",
+    "birth": "Data urodzenia",
+    "age": "Wiek",
+    "memoir": "Życiorys",
+    "submit": "Wyślij",
+    "people.list": "Lista osób",
+    "people.add": "Dodaj osobę",
+    "error.required": "Te pole jest wymagane",
+    "error.maxLengthExceeded": "Ten tekst jest za długi",
+    "error.invalidDate": "Wprowadzona data jest nieprawidłowa"
 }

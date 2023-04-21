@@ -1,5 +1,15 @@
 {
     "main": "Main",
     "views": "Views",
-    "language": "Language"
+    "language": "Language",
+    "name": "Name",
+    "birth": "Birthday",
+    "age": "Age",
+    "memoir": "Memoir",
+    "submit": "Submit",
+    "people.list": "Person list",
+    "people.add": "Add person",
+    "error.required": "This field is required",
+    "error.maxLengthExceeded": "This text is too long",
+    "error.invalidDate": "This date is invalid"
 }
