@@ -6,12 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 interface LanuageSelectProps
     extends SelectProps {
-        defaultLanguage?: string;
+        defaultlanguage?: string;
 }
 
 const LanguageSelect = (props: LanuageSelectProps) => {
     const { t } = useTranslation();
-    const [language, setLanguage] = useState(props?.defaultLanguage || '');
+    const [language, setLanguage] = useState(props?.defaultlanguage || '');
 
     const handleChange = (e: SelectChangeEvent<unknown>) => {
         const selectedLanguage = e.target.value as string;
@@ -39,7 +39,7 @@ const LanguageSelect = (props: LanuageSelectProps) => {
                 labelId="language-select-label"
                 id="language-select"
                 label={t('language')}
-                defaultValue={props?.defaultLanguage as string}
+                defaultValue={props?.defaultlanguage as string}
                 onChange={handleChange}
                 size="small"
                 sx={{
@@ -47,8 +47,9 @@ const LanguageSelect = (props: LanuageSelectProps) => {
                 }}
                 {...props}
             >
-                {availableLanguages.map((lang) => (
+                {availableLanguages.map((lang, idx) => (
                     <MenuItem
+                        key={idx}
                         value={lang.key}
                     >
                         {lang.text}

@@ -19,7 +19,7 @@ const Navbar = () => {
                         react-people
                     </Typography>
 
-                    <LanguageSelect className="mr-5" defaultLanguage="pl" />
+                    <LanguageSelect className="mr-5" defaultlanguage="pl" />
 
                     {isMobile ? (
                         <NavigationDrawer />
