@@ -11,5 +11,12 @@
     "people.add": "Dodaj osobę",
     "error.required": "Te pole jest wymagane",
     "error.maxLengthExceeded": "Ten tekst jest za długi",
-    "error.invalidDate": "Wprowadzona data jest nieprawidłowa"
+    "error.invalidDate": "Wprowadzona data jest nieprawidłowa",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "delete.selected": "Usuń zaznaczone",
+    "action": "Akcja",
+    "entries.empty": "Brak elementów",
+    "entries.show": "Pokaż",
+    "entries.per.page": "elementów na stronie"
 }

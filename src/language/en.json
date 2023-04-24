@@ -11,5 +11,12 @@
     "people.add": "Add person",
     "error.required": "This field is required",
     "error.maxLengthExceeded": "This text is too long",
-    "error.invalidDate": "This date is invalid"
+    "error.invalidDate": "This date is invalid",
+    "delete": "Delete",
+    "edit": "Edit",
+    "delete.selected": "Delete selected",
+    "action": "Action",
+    "entries.empty": "No entries",
+    "entries.show": "Show",
+    "entries.per.page": "entries per page"
 }

@@ -1,5 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { User } from "../store/usersSlice";
-import { TableRow, TableCell, Checkbox } from "@mui/material";
+import { TableRow, TableCell, Checkbox, Button } from "@mui/material";
 
 interface TableUserProps
     extends User {
@@ -7,6 +8,8 @@ interface TableUserProps
 }
 
 const TableUser = (props: TableUserProps) => {
+    const { t } = useTranslation();
+
     return ( 
         <TableRow
             key={props.key}
@@ -16,6 +19,10 @@ const TableUser = (props: TableUserProps) => {
             <TableCell align="right">{new Date(props?.birthDate).toUTCString()}</TableCell>
             <TableCell align="right">{Math.abs(new Date().getUTCFullYear() - new Date(props?.birthDate).getUTCFullYear())}</TableCell>
             <TableCell align="right">{props?.memoir}</TableCell>
+            <TableCell align="right">
+                <Button variant="outlined" color="secondary">{t('edit')}</Button>&nbsp;
+                <Button variant="outlined" color="error">{t('delete')}</Button>
+            </TableCell>
             <TableCell align="center">
                 <Checkbox />
             </TableCell>

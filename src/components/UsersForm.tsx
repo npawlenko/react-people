@@ -8,7 +8,6 @@ import { useAppDispatch } from "../hooks/reduxHooks";
 import useUserForm from "../hooks/useUserForm";
 import { addUser } from "../store/usersSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import i18n from "../i18n";
 
 export type FormValues = {
     name: string;
@@ -38,47 +37,44 @@ const UsersForm = () => {
     }
 
     return ( 
-        <div className="my-5">
-            <Typography variant="h2" gutterBottom fontSize="2rem">{t('people.add')}</Typography>
-            <form onSubmit={handleSubmit(onSubmit)} ref={form}>
-                <div>
+        <form onSubmit={handleSubmit(onSubmit)} ref={form}>
+            <div>
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    label={t('name')}
+                    error={errors?.name ? true : false}
+                    helperText={errors?.name?.message}
+                    {...register('name')} />
+            </div>
+            <div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <TextField
                         margin="normal"
-                        fullWidth
-                        label={t('name')}
-                        error={errors?.name ? true : false}
-                        helperText={errors?.name?.message}
-                        {...register('name')} />
-                </div>
-                <div>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <TextField
-                            margin="normal"
-                            fullWidth type="date"
-                            defaultValue="2001-08-01"
-                            label={t('birth')}
-                            error={errors?.birthday ? true : false}
-                            helperText={errors?.birthday?.message}
-                            {...register('birthday')} />
-                    </LocalizationProvider>
-                </div>
-                <div>
-                    <TextField
-                        margin="normal"
-                        fullWidth
-                        multiline
-                        rows={4}
-                        label={t('memoir')}
-                        error={errors?.memoir ? true : false}
-                        helperText={errors?.memoir?.message}
-                        {...register('memoir')} />
-                </div>
-                <Button type="submit" sx={{
-                    display: "block",
-                    margin: "0 auto"
-                }}>{t('submit')}</Button>
-            </form>
-        </div>
+                        fullWidth type="date"
+                        defaultValue="2001-08-01"
+                        label={t('birth')}
+                        error={errors?.birthday ? true : false}
+                        helperText={errors?.birthday?.message}
+                        {...register('birthday')} />
+                </LocalizationProvider>
+            </div>
+            <div>
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    multiline
+                    rows={4}
+                    label={t('memoir')}
+                    error={errors?.memoir ? true : false}
+                    helperText={errors?.memoir?.message}
+                    {...register('memoir')} />
+            </div>
+            <Button type="submit" sx={{
+                display: "block",
+                margin: "0 auto"
+            }}>{t('submit')}</Button>
+        </form>
     );
 }
  
