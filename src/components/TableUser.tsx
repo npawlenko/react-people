@@ -8,7 +8,7 @@ import { ChangeEvent } from "react";
 interface TableUserProps
     extends User {
         key?: number;
-        onCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => {};
+        onCheckboxChange: (e: ChangeEvent<HTMLInputElement>, userId: number) => {};
 
 }
 
@@ -48,7 +48,7 @@ const TableUser = (props: TableUserProps) => {
                 <Button variant="outlined" color="error" onClick={() => dispatch(removeUser(props))}>{t('delete')}</Button>
             </TableCell>
             <TableCell align="center">
-                <Checkbox onChange={(e) => props?.onCheckboxChange(e, props?.id)} />
+                <Checkbox onChange={(e) => props?.onCheckboxChange(e, props?.id as number)} />
             </TableCell>
         </TableRow>
     );

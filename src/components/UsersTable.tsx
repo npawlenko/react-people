@@ -16,8 +16,15 @@ const UsersTable = () => {
     const { t } = useTranslation();
 
     const handleSelection = (e: ChangeEvent<HTMLInputElement>, userId: number) => {
-        console.log(e);
-        rowSelection.push(userId);
+        if(e.target.checked) {
+            rowSelection.push(userId);
+        }
+        else {
+            const idx = rowSelection.indexOf(userId);
+            if(idx === -1)
+                return;
+            rowSelection.splice(idx, 1);
+        }
     }
 
     return ( 
@@ -64,9 +71,7 @@ const UsersTable = () => {
                             <TableCell align="right">{t('age')}</TableCell>
                             <TableCell align="right">{t('memoir')}</TableCell>
                             <TableCell align="right">{t('action')}</TableCell>
-                            <TableCell align="center">
-                                <Checkbox></Checkbox>
-                            </TableCell>
+                            <TableCell align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

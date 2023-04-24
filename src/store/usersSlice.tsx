@@ -28,9 +28,10 @@ export const usersSlice = createSlice({
                 const id = payload as number;
                 idx = state.findIndex(user1 => user1.id === id);
             }
-
-            const user = payload as User;
-            idx = state.findIndex(user1 => user1.id === user.id);
+            else {
+                const user = payload as User;
+                idx = state.findIndex(user1 => user1.id === user.id);
+            }
 
             if (idx === -1)
                 return;
