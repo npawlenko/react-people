@@ -18,5 +18,7 @@
     "action": "Akcja",
     "entries.empty": "Brak elementów",
     "entries.show": "Pokaż",
-    "entries.per.page": "elementów na stronie"
+    "entries.per.page": "elementów na stronie",
+    "error.404": "Błąd 404",
+    "pageNotFound": "Strona, której szukasz nie została znaleziona :("
 }
