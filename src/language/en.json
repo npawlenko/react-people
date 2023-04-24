@@ -18,5 +18,7 @@
     "action": "Action",
     "entries.empty": "No entries",
     "entries.show": "Show",
-    "entries.per.page": "entries per page"
+    "entries.per.page": "entries per page",
+    "error.404": "Error 404",
+    "pageNotFound": "Requested page was not found :("
 }
