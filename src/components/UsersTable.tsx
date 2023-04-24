@@ -1,18 +1,24 @@
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button, Grid, Pagination, Box, Checkbox } from "@mui/material";
-import { useAppSelector } from "../hooks/reduxHooks";
+import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button, Grid, Box, Checkbox } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { useTranslation } from "react-i18next";
 import TableUser from "./TableUser";
-import NumberSelect from "./NumberSelect";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import usePagination from "../hooks/usePagination";
+import { removeUser } from "../store/usersSlice";
 
 
 
 const UsersTable = () => {
-    const [rowSelection, setRowSelection] = useState({});
+    const [rowSelection, setRowSelection] = useState<Array<number>>([]);
     const users = useAppSelector((state) => state.users);
+    const dispatch = useAppDispatch();
     const { entries, entriesElement, paginationElement, pageElements } = usePagination(users);
     const { t } = useTranslation();
+
+    const handleSelection = (e: ChangeEvent<HTMLInputElement>, userId: number) => {
+        console.log(e);
+        rowSelection.push(userId);
+    }
 
     return ( 
         <>
@@ -32,7 +38,17 @@ const UsersTable = () => {
                         md: "0"
                     }}
                 >
-                    <Button variant="contained" color="error">{t('delete.selected')}</Button>
+                    <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => {
+                            rowSelection.forEach((userId) => {
+                                dispatch(removeUser(userId));
+                            })
+                        }}
+                    >
+                        {t('delete.selected')}
+                    </Button>
                 </Grid>
             </Grid>
 
@@ -54,13 +70,13 @@ const UsersTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {users.length == 0 ?
+                    {users.length === 0 ?
                         (
                             <TableCell colSpan={6} align="center">{t('entries.empty')}</TableCell>
                         )
                         :
                         pageElements.map((user, idx) => (
-                            <TableUser key={idx} {...user} />
+                            <TableUser key={idx} onCheckboxChange={handleSelection} {...user} />
                         ))
                     }
                     </TableBody>

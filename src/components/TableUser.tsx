@@ -3,10 +3,13 @@ import { User } from "../store/usersSlice";
 import { TableRow, TableCell, Checkbox, Button, Typography } from "@mui/material";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { removeUser } from "../store/usersSlice";
+import { ChangeEvent } from "react";
 
 interface TableUserProps
     extends User {
         key?: number;
+        onCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => {};
+
 }
 
 const TableUser = (props: TableUserProps) => {
@@ -45,7 +48,7 @@ const TableUser = (props: TableUserProps) => {
                 <Button variant="outlined" color="error" onClick={() => dispatch(removeUser(props))}>{t('delete')}</Button>
             </TableCell>
             <TableCell align="center">
-                <Checkbox />
+                <Checkbox onChange={(e) => props?.onCheckboxChange(e, props?.id)} />
             </TableCell>
         </TableRow>
     );
