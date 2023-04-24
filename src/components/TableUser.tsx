@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { User } from "../store/usersSlice";
 import { TableRow, TableCell, Checkbox, Button, Typography } from "@mui/material";
+import { useAppDispatch } from "../hooks/reduxHooks";
+import { removeUser } from "../store/usersSlice";
 
 interface TableUserProps
     extends User {
@@ -8,6 +10,7 @@ interface TableUserProps
 }
 
 const TableUser = (props: TableUserProps) => {
+    const dispatch = useAppDispatch();
     const { t } = useTranslation();
 
     return ( 
@@ -39,7 +42,7 @@ const TableUser = (props: TableUserProps) => {
             </TableCell>
             <TableCell align="right">
                 <Button variant="outlined" color="secondary">{t('edit')}</Button>&nbsp;
-                <Button variant="outlined" color="error">{t('delete')}</Button>
+                <Button variant="outlined" color="error" onClick={() => dispatch(removeUser(props))}>{t('delete')}</Button>
             </TableCell>
             <TableCell align="center">
                 <Checkbox />

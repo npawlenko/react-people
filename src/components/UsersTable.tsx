@@ -3,30 +3,22 @@ import { useAppSelector } from "../hooks/reduxHooks";
 import { useTranslation } from "react-i18next";
 import TableUser from "./TableUser";
 import NumberSelect from "./NumberSelect";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import usePagination from "../hooks/usePagination";
 
 
 
 const UsersTable = () => {
-    const [page, setPage] = useState(1);
-    const [entries, setEntries] = useState(10);
-    const { t } = useTranslation();
+    const [rowSelection, setRowSelection] = useState({});
     const users = useAppSelector((state) => state.users);
+    const { entries, entriesElement, paginationElement, pageElements } = usePagination(users);
+    const { t } = useTranslation();
 
     return ( 
         <>
             <Grid container>
                 <Grid item xs={12} md={6}>
-                    {t('entries.show')}&nbsp;
-                    <NumberSelect
-                        numbers={[10, 20, 50]}
-                        onChange={(e) => {
-                            const val = e.target.value as number;
-                            setPage(1);
-                            setEntries(val)
-                        }}
-                    />
-                    &nbsp;{t('entries.per.page')}
+                    {entriesElement}
                 </Grid>
                 <Grid item 
                     xs={12}
@@ -67,7 +59,7 @@ const UsersTable = () => {
                             <TableCell colSpan={6} align="center">{t('entries.empty')}</TableCell>
                         )
                         :
-                        users.slice((page-1)*entries, (page-1)*entries + entries).map((user, idx) => (
+                        pageElements.map((user, idx) => (
                             <TableUser key={idx} {...user} />
                         ))
                     }
@@ -77,17 +69,7 @@ const UsersTable = () => {
 
             {users.length > entries ?
                 <Box textAlign="right">
-                    <Pagination
-                        variant="outlined"
-                        color="primary"
-                        page={page}
-                        count={Math.ceil(users.length / entries)}
-                        onChange={(e, value) => setPage(value)}
-                        sx={{
-                            display: "flex",
-                            justifyContent: "flex-end"
-                        }}
-                    />
+                    {paginationElement}
                 </Box>
                 :
                 null
