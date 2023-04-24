@@ -20,7 +20,11 @@ const UsersTable = () => {
                     {t('entries.show')}&nbsp;
                     <NumberSelect
                         numbers={[10, 20, 50]}
-                        onChange={(e) => setEntries(e.target.value as number)}
+                        onChange={(e) => {
+                            const val = e.target.value as number;
+                            setPage(1);
+                            setEntries(val)
+                        }}
                     />
                     &nbsp;{t('entries.per.page')}
                 </Grid>
@@ -76,6 +80,7 @@ const UsersTable = () => {
                     <Pagination
                         variant="outlined"
                         color="primary"
+                        page={page}
                         count={Math.ceil(users.length / entries)}
                         onChange={(e, value) => setPage(value)}
                         sx={{

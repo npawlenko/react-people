@@ -9,7 +9,7 @@ const useUserForm =  () => {
     }
 
     const validationSchema = object({
-        name: string().required(t("error.required") as string),
+        name: string().max(60, t("error.maxLengthExceeded") as string).required(t("error.required") as string),
         birthday: date().typeError(t("error.invalidDate") as string).required(t("error.required") as string),
         memoir: string().max(250, t("error.maxLengthExceeded") as string)
     });
