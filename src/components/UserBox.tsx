@@ -3,19 +3,19 @@ import "../assets/UserBox.scss";
 import { User } from "../store/usersSlice";
 import { Typography } from "@mui/material";
 
-interface UserBoxProps
-    extends User {
+interface UserBoxProps {
+    user: User;
 }
 
-const UserBox = ({id, name, birthDate, memoir}: UserBoxProps) => {
+const UserBox = ({user}: UserBoxProps) => {
     const { t } = useTranslation();
 
     return (
         <div className="user-box">
-            <Typography variant="h6">{t('name')}: {name}</Typography>
+            <Typography variant="h6">{t('name')}: {user.name}</Typography>
             <Typography variant="h6">
                 {t('birth')}:&nbsp;
-                {birthDate.toLocaleDateString(
+                {user.birthDate.toLocaleDateString(
                     undefined, 
                     {
                         month: "2-digit",
@@ -27,10 +27,10 @@ const UserBox = ({id, name, birthDate, memoir}: UserBoxProps) => {
             
             <Typography variant="h6">
                 {t('age')}:&nbsp;
-                {Math.abs(new Date().getUTCFullYear() - new Date(birthDate).getUTCFullYear())}
+                {Math.abs(new Date().getUTCFullYear() - new Date(user.birthDate).getUTCFullYear())}
             </Typography>
             <Typography variant="h6">{t('memoir')}:</Typography>
-            <Typography>{memoir}</Typography>
+            <Typography>{user?.memoir}</Typography>
         </div>
     );
 }

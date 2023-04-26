@@ -81,7 +81,7 @@ const UsersTable = () => {
                         )
                         :
                         pageElements.map((user, idx) => (
-                            <TableUser key={idx} onCheckboxChange={handleSelection} {...user} />
+                            <TableUser key={idx} user={user} onCheckboxChange={handleSelection} />
                         ))
                     }
                     </TableBody>

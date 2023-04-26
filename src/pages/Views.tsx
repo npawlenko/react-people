@@ -12,7 +12,7 @@ const Views = () => {
                 data={users}
                 keyExtractor={(user) => user?.id as number}
                 renderItem={(user) => (
-                    <UserBox {...user} />
+                    <UserBox user={user} />
                 )}
 
             />
