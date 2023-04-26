@@ -20,5 +20,7 @@
     "entries.show": "Pokaż",
     "entries.per.page": "elementów na stronie",
     "error.404": "Błąd 404",
-    "pageNotFound": "Strona, której szukasz nie została znaleziona :("
+    "pageNotFound": "Strona, której szukasz nie została znaleziona :(",
+    "save": "Zapisz",
+    "cancel": "Anuluj"
 }

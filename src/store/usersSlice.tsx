@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface User {
     id?: number;
     name: string;
-    birthDate: Date;
+    birthday: string;
     memoir?: string;
 }
 
@@ -37,9 +37,17 @@ export const usersSlice = createSlice({
                 return;
             state.splice(idx, 1);
         },
+        editUser: (state: User[], action: PayloadAction<User>) => {
+            const user = action.payload;
+            const idx = state.findIndex(user1 => user1.id === user.id);
+            if (idx === -1)
+                return;
+
+            state[idx] = user;
+        }
     }
 })
 
-export const { addUser, removeUser } = usersSlice.actions
+export const { addUser, removeUser, editUser } = usersSlice.actions
 
 export default usersSlice.reducer

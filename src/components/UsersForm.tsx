@@ -13,10 +13,9 @@ export type FormValues = {
     name: string;
     birthday: Date;
     memoir: string;
-};
+}
 
 const UsersForm = () => {
-    const form = useRef<HTMLFormElement>(null);
     const { validate, validationSchema } = useUserForm();
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: yupResolver(validationSchema)
@@ -30,14 +29,14 @@ const UsersForm = () => {
             user.birthday.setMinutes(user.birthday.getMinutes() - user.birthday.getTimezoneOffset()) // solve for local timezones issue
             dispatch(addUser({
                 name: user.name,
-                birthDate: user.birthday,
+                birthday: user.birthday.toString(),
                 memoir: user?.memoir
             }));
         } catch(e) {}
     }
 
     return ( 
-        <form onSubmit={handleSubmit(onSubmit)} ref={form}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <TextField
                     margin="normal"

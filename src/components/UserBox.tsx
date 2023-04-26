@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import "../assets/UserBox.scss";
 import { User } from "../store/usersSlice";
 import { Typography } from "@mui/material";
+import { changeDateToLocalFormat } from "../utils/date";
 
 interface UserBoxProps {
     user: User;
@@ -9,25 +10,19 @@ interface UserBoxProps {
 
 const UserBox = ({user}: UserBoxProps) => {
     const { t } = useTranslation();
+    const birthday = new Date(user.birthday);
 
     return (
         <div className="user-box">
             <Typography variant="h6">{t('name')}: {user.name}</Typography>
             <Typography variant="h6">
                 {t('birth')}:&nbsp;
-                {user.birthDate.toLocaleDateString(
-                    undefined, 
-                    {
-                        month: "2-digit",
-                        day: "2-digit",
-                        year: "numeric"
-                    }
-                )}
+                {changeDateToLocalFormat(birthday)}
             </Typography>
             
             <Typography variant="h6">
                 {t('age')}:&nbsp;
-                {Math.abs(new Date().getUTCFullYear() - new Date(user.birthDate).getUTCFullYear())}
+                {Math.abs(new Date().getUTCFullYear() - new Date(birthday).getUTCFullYear())}
             </Typography>
             <Typography variant="h6">{t('memoir')}:</Typography>
             <Typography>{user?.memoir}</Typography>
