@@ -9,7 +9,7 @@ import { editUser, removeUser } from "../store/usersSlice";
 import useUserForm from "../hooks/useUserForm";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormValues } from "./UsersForm";
+import { FormValues } from "../data/types";
 
 
 const UsersTable = () => {
@@ -84,6 +84,7 @@ const UsersTable = () => {
                         onClick={() => {
                             rowSelection.forEach((userId) => {
                                 dispatch(removeUser(userId));
+                                setEditUserId(null);
                             })
                         }}
                     >

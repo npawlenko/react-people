@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "../assets/UserBox.scss";
-import { User } from "../store/usersSlice";
+import { User } from "../data/types";
 import { Typography } from "@mui/material";
 import { changeDateToLocalFormat } from "../utils/date";
 

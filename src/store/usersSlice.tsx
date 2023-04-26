@@ -1,11 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-export interface User {
-    id?: number;
-    name: string;
-    birthday: string;
-    memoir?: string;
-}
+import { User } from "../data/types";
 
 const initialState: User[] = [];
 

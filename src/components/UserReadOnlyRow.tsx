@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { User } from "../store/usersSlice";
+import { User } from "../data/types";
 import { TableRow, TableCell, Checkbox, Button, Typography, Modal } from "@mui/material";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { removeUser } from "../store/usersSlice";

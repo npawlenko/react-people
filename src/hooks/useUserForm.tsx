@@ -1,5 +1,5 @@
 import { string, date, object } from 'yup';
-import { FormValues } from '../components/UsersForm';
+import { FormValues } from '../data/types';
 import { useTranslation } from 'react-i18next';
 
 const useUserForm =  () => {

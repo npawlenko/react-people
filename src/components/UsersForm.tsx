@@ -8,12 +8,7 @@ import { useAppDispatch } from "../hooks/reduxHooks";
 import useUserForm from "../hooks/useUserForm";
 import { addUser } from "../store/usersSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-export type FormValues = {
-    name: string;
-    birthday: Date;
-    memoir: string;
-}
+import { FormValues } from "../data/types";
 
 const UsersForm = () => {
     const { validate, validationSchema } = useUserForm();

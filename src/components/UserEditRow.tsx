@@ -1,12 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { User } from "../store/usersSlice";
 import { TableRow, TableCell, Button, TextField } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MouseEvent } from "react";
 import { changeDateToInputFormat } from "../utils/date";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { FormValues } from "./UsersForm";
+import { User, FormValues } from "../data/types";
 
 
 interface UserEditRowProps {
