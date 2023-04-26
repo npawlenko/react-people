@@ -1,17 +1,16 @@
-import { useRef } from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useAppDispatch } from "../hooks/reduxHooks";
-import useUserForm from "../hooks/useUserForm";
+import useUserValidation from "../hooks/useUserValidation";
 import { addUser } from "../store/usersSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormValues } from "../data/types";
 
 const UsersForm = () => {
-    const { validate, validationSchema } = useUserForm();
+    const { validate, validationSchema } = useUserValidation();
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: yupResolver(validationSchema)
     });

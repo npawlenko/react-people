@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { User } from "../data/types";
-import { TableRow, TableCell, Checkbox, Button, Typography, Modal } from "@mui/material";
-import { useAppDispatch } from "../hooks/reduxHooks";
-import { removeUser } from "../store/usersSlice";
+import { User } from "../../data/types";
+import { TableRow, TableCell, Checkbox, Button, Typography } from "@mui/material";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { removeUser } from "../../store/usersSlice";
 import { ChangeEvent, MouseEvent } from "react";
-import { changeDateToLocalFormat } from "../utils/date";
+import { changeDateToLocalFormat } from "../../utils/date";
 
 interface UserReadOnlyRowProps {
     user: User;

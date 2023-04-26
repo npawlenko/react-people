@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import UsersTable from "../components/UsersTable";
+import UsersTable from "../components/UsersTable/UsersTable";
 import UsersForm from "../components/UsersForm";
 import { useTranslation } from "react-i18next";
 import { Typography } from "@mui/material";

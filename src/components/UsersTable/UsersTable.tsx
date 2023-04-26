@@ -1,21 +1,21 @@
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button, Grid, Box, Checkbox } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { useTranslation } from "react-i18next";
 import UserReadOnlyRow from "./UserReadOnlyRow";
 import UserEditRow from "./UserEditRow";
 import { ChangeEvent, MouseEvent, useState, Fragment } from "react";
-import usePagination from "../hooks/usePagination";
-import { editUser, removeUser } from "../store/usersSlice";
-import useUserForm from "../hooks/useUserForm";
+import usePagination from "../../hooks/usePagination";
+import { editUser, removeUser } from "../../store/usersSlice";
+import useUserValidation from "../../hooks/useUserValidation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormValues } from "../data/types";
+import { FormValues } from "../../data/types";
 
 
 const UsersTable = () => {
     const [rowSelection, setRowSelection] = useState<Array<number>>([]);
     const [editUserId, setEditUserId] = useState<number | null>(null);
-    const { validate, validationSchema } = useUserForm();
+    const { validate, validationSchema } = useUserValidation();
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: yupResolver(validationSchema)
     });
@@ -60,6 +60,14 @@ const UsersTable = () => {
         setEditUserId(null);
     }
 
+    const handleDeleteSelected = () => {
+        rowSelection.forEach((userId) => {
+            dispatch(removeUser(userId));
+            setEditUserId(null);
+            setRowSelection([]);
+        })
+    }
+
     return ( 
         <>
             <Grid container>
@@ -81,12 +89,7 @@ const UsersTable = () => {
                     <Button
                         variant="contained"
                         color="error"
-                        onClick={() => {
-                            rowSelection.forEach((userId) => {
-                                dispatch(removeUser(userId));
-                                setEditUserId(null);
-                            })
-                        }}
+                        onClick={handleDeleteSelected}
                     >
                         {t('delete.selected')}
                     </Button>

@@ -1,9 +1,9 @@
 
 import { AppBar, Toolbar, Container, Typography, useMediaQuery, useTheme } from '@mui/material';
-import './../assets/Navbar.scss';
+import '../../assets/Navbar.scss';
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import LanguageSelect from './LanguageSelect';
+import LanguageSelect from '../LanguageSelect';
 import NavigationDrawer from './NavigationDrawer';
 
 const Navbar = () => {

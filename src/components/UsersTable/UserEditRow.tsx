@@ -3,9 +3,9 @@ import { TableRow, TableCell, Button, TextField } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MouseEvent } from "react";
-import { changeDateToInputFormat } from "../utils/date";
+import { changeDateToInputFormat } from "../../utils/date";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { User, FormValues } from "../data/types";
+import { User, FormValues } from "../../data/types";
 
 
 interface UserEditRowProps {

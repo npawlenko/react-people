@@ -2,7 +2,7 @@ import { string, date, object } from 'yup';
 import { FormValues } from '../data/types';
 import { useTranslation } from 'react-i18next';
 
-const useUserForm =  () => {
+const useUserValidation =  () => {
     const { t } = useTranslation();
     const validate = async (data: FormValues) => {
         return await validationSchema.validate(data);
@@ -20,4 +20,4 @@ const useUserForm =  () => {
     }
 }
 
-export default useUserForm
+export default useUserValidation
